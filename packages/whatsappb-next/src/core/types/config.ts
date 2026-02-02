@@ -6,10 +6,11 @@ export interface WhatsAppPhoneConfig {
 
 export interface WhatsappConfig {
   accountId: string;
-  accessToken: string;
-  verifyToken: string;
+  accessToken: string;   
+  verifyToken: string;    
   apiVersion?: string;
   phones: WhatsAppPhoneConfig[];
+  proxyUrl?: string;      
 }
 
 export interface WhatsAppApiResponse {

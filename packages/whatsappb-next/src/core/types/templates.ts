@@ -33,4 +33,6 @@ export interface SendTemplateOptions {
   templateName: string;
   languageCode: string;
   components?: TemplateComponentValue[];
+  /** Optional: Include the template structure to save a snapshot of what was sent */
+  templateSnapshot?: WhatsAppTemplate;
 }
