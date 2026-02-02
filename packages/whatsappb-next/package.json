@@ -1,7 +1,19 @@
 {
-  "devDependencies": {
-    "@types/react": "^19.2.10",
-    "@types/react-dom": "^19.2.3",
-    "typescript": "^5.9.3"
+  "name": "whatsappb-next",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
   }
 }

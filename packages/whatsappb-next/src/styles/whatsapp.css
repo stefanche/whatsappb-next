@@ -60,6 +60,64 @@
   border-top-left-radius: 0;
 }
 
+/* Template Message Bubble */
+.wa-bubble-template {
+  padding-bottom: 4px;
+}
+
+.wa-bubble-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Template Buttons */
+.wa-bubble-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.wa-bubble-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: #00a884;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.wa-bubble-btn:hover {
+  background-color: rgba(0, 168, 132, 0.1);
+}
+
+.wa-bubble-btn-url {
+  color: #00a884;
+}
+
+.wa-btn-icon {
+  font-size: 14px;
+}
+
+/* Template Badge */
+.wa-template-badge {
+  font-size: 10px;
+  background-color: rgba(0, 168, 132, 0.15);
+  color: #00a884;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
 /* Input Area */
 .wa-chat-footer {
   padding: 10px 16px;
@@ -98,4 +156,491 @@
 .wa-template-card:hover {
   border-color: #128c7e;
   transform: translateY(-2px);
+}
+
+/* Phone Selector */
+.wa-phone-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wa-phone-selector-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #667781;
+}
+
+.wa-phone-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  color: #111b21;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wa-phone-select:hover {
+  border-color: #128c7e;
+}
+
+.wa-phone-select:focus {
+  border-color: #128c7e;
+  box-shadow: 0 0 0 2px rgba(18, 140, 126, 0.2);
+}
+
+.wa-phone-select:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.wa-phone-select-loading,
+.wa-phone-select-empty {
+  color: #667781;
+  font-style: italic;
+}
+
+/* Chat Window States */
+.wa-loading,
+.wa-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #667781;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+.wa-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #075e54;
+  color: white;
+}
+
+.wa-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #128c7e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.wa-contact-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.wa-status {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.wa-messages-area {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #e5ddd5;
+}
+
+.wa-input-footer {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
+}
+
+.wa-input-footer input {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
+
+.wa-input-footer input:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.wa-input-footer button {
+  padding: 10px 20px;
+  background-color: #128c7e;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.wa-input-footer button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* Message Bubble Meta */
+.wa-bubble-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-size: 11px;
+  color: #667781;
+  margin-top: 4px;
+}
+
+.wa-status-check {
+  font-size: 14px;
+}
+
+.wa-status-check.read {
+  color: #53bdeb;
+}
+
+.wa-status-check.delivered {
+  color: #667781;
+}
+
+.wa-status-check.sent {
+  color: #667781;
+}
+
+/* ============================================
+   CONVERSATION LIST
+   ============================================ */
+
+.wa-conversation-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.wa-new-conversation-btn {
+  padding: 12px 16px;
+  background-color: #f0f2f5;
+  border: none;
+  border-bottom: 1px solid #e9edef;
+  color: #075e54;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.wa-new-conversation-btn:hover {
+  background-color: #e9edef;
+}
+
+.wa-conversation-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e9edef;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.wa-conversation-item:hover {
+  background-color: #f5f6f6;
+}
+
+.wa-conversation-item.selected {
+  background-color: #ebebeb;
+}
+
+.wa-conversation-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #dfe5e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #667781;
+  flex-shrink: 0;
+}
+
+.wa-conversation-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.wa-conversation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.wa-conversation-name {
+  font-weight: 500;
+  font-size: 15px;
+  color: #111b21;
+}
+
+.wa-conversation-time {
+  font-size: 12px;
+  color: #667781;
+}
+
+.wa-conversation-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wa-conversation-last-message {
+  font-size: 13px;
+  color: #667781;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.wa-conversation-unread {
+  background-color: #25d366;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.wa-conversation-loading,
+.wa-conversation-empty,
+.wa-conversation-error {
+  padding: 20px;
+  text-align: center;
+  color: #667781;
+  font-size: 14px;
+}
+
+.wa-conversation-error {
+  color: #ea0038;
+}
+
+/* ============================================
+   MESSAGE HISTORY
+   ============================================ */
+
+.wa-message-history {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #e5ddd5;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23d4c8b8" opacity="0.3"/><circle cx="75" cy="75" r="1" fill="%23d4c8b8" opacity="0.3"/><circle cx="50" cy="10" r="0.5" fill="%23d4c8b8" opacity="0.2"/></pattern></defs><rect fill="url(%23grain)" width="100" height="100"/></svg>');
+}
+
+.wa-message-history-loading,
+.wa-message-history-empty,
+.wa-message-history-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #667781;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+.wa-message-history-error {
+  color: #ea0038;
+}
+
+/* ============================================
+   MESSAGE COMPOSER
+   ============================================ */
+
+.wa-message-composer {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5;
+  border-top: 1px solid #e9edef;
+}
+
+.wa-composer-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+}
+
+.wa-composer-action-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.wa-composer-action-btn:hover:not(:disabled) {
+  background-color: #e9edef;
+}
+
+.wa-composer-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wa-composer-text-input {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background-color: white;
+}
+
+.wa-composer-text-input:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.wa-composer-send-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #00a884;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.wa-composer-send-btn:hover:not(:disabled) {
+  background-color: #008f72;
+}
+
+.wa-composer-send-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Media Panel */
+.wa-composer-media-panel {
+  padding: 16px;
+  border-bottom: 1px solid #e9edef;
+  background-color: white;
+}
+
+.wa-composer-media-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.wa-composer-tab {
+  padding: 8px 16px;
+  border: 1px solid #e9edef;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.wa-composer-tab:hover {
+  background-color: #f5f6f6;
+}
+
+.wa-composer-tab.active {
+  background-color: #e7f8f0;
+  border-color: #00a884;
+  color: #00a884;
+}
+
+.wa-composer-media-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wa-composer-input {
+  padding: 10px 12px;
+  border: 1px solid #e9edef;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.wa-composer-input:focus {
+  border-color: #00a884;
+}
+
+.wa-composer-media-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.wa-composer-btn-cancel {
+  padding: 8px 16px;
+  border: 1px solid #e9edef;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.wa-composer-btn-cancel:hover {
+  background-color: #f5f6f6;
+}
+
+.wa-composer-btn-send {
+  padding: 8px 16px;
+  border: none;
+  background-color: #00a884;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.wa-composer-btn-send:hover:not(:disabled) {
+  background-color: #008f72;
+}
+
+.wa-composer-btn-send:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
