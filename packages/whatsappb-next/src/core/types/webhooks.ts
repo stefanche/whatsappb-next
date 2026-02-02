@@ -1,4 +1,4 @@
-import { MessageStatus } from '../db/types';
+import { MessageStatus } from '../../db/types';
 
 /** The raw structure of an incoming Webhook from Meta */
 export interface WhatsAppWebhookPayload {
