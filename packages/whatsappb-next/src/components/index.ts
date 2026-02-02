@@ -4,3 +4,7 @@ export * from './TemplatePicker';
 export * from './MessageBubble';
 export * from './PhoneSelector';
 export * from './WhatsAppChatWindow';
+export * from './TemplateForm';
+export * from './ConversationList';
+export * from './MessageHistory';
+export * from './MessageComposer';

@@ -1,56 +1,110 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useWhatsApp } from './WhatsAppProvider';
 import { MessageBubble } from './MessageBubble';
-import { TemplateGallery } from './TemplateGallery';
 import { WhatsAppMessageRecord } from '../db/types';
 
-export const WhatsAppChatWindow = ({ customerNumber, initialHistory = [] }: { 
-  customerNumber: string; 
-  initialHistory?: WhatsAppMessageRecord[] 
+interface WhatsAppChatWindowProps {
+  customerNumber: string;
+  /** Optional callback after a message is sent */
+  onMessageSent?: () => void;
+}
+
+export const WhatsAppChatWindow: React.FC<WhatsAppChatWindowProps> = ({ 
+  customerNumber,
+  onMessageSent 
 }) => {
-  const { client, phones, templates, isLoading } = useWhatsApp();
-  const [messages, setMessages] = useState(initialHistory);
-  const [text, setText] = useState('');
-  const [showTemplates, setShowTemplates] = useState(false);
-  const [activePhoneId, setActivePhoneId] = useState('');
+  const { client, activePhone } = useWhatsApp();
+  const [messages, setMessages] = useState<WhatsAppMessageRecord[]>([]);
+  const [message, setMessage] = useState('');
+  const [isSending, setIsSending] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { if (phones.length > 0) setActivePhoneId(phones[0].phoneNumberId); }, [phones]);
+  // Fetch message history
+  const fetchMessages = async () => {
+    if (!activePhone) return;
+    
+    try {
+      const history = await client.getMessages(customerNumber, activePhone.phoneNumberId);
+      setMessages(history);
+    } catch (err) {
+      console.error('Failed to fetch messages:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  const send = async () => {
-    if (!text.trim()) return;
-    const res = await client.sendText({ fromPhoneNumberId: activePhoneId, to: customerNumber, body: text });
-    setMessages([...messages, { 
-      wamid: res.messages[0].id, phoneNumberId: activePhoneId, customerNumber, 
-      type: 'text', content: text, direction: 'outbound', status: 'sent', timestamp: new Date() 
-    }]);
-    setText('');
+  // Load messages on mount and when customer changes
+  useEffect(() => {
+    setIsLoading(true);
+    fetchMessages();
+  }, [customerNumber, activePhone?.phoneNumberId]);
+
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const handleSend = async () => {
+    if (!message.trim() || !activePhone) return;
+    
+    setIsSending(true);
+    try {
+      await client.sendText({
+        fromPhoneNumberId: activePhone.phoneNumberId,
+        to: customerNumber,
+        body: message
+      });
+      setMessage('');
+      // Refresh messages to show the sent message
+      await fetchMessages();
+      onMessageSent?.();
+    } catch (err) {
+      console.error('Failed to send message:', err);
+      alert("Failed to send message. Check console.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <div className="wa-chat-container">
-      <div className="wa-chat-header">
-        <strong>{customerNumber}</strong>
-        <select value={activePhoneId} onChange={e => setActivePhoneId(e.target.value)}>
-          {phones.map(p => <option key={p.phoneNumberId} value={p.phoneNumberId}>{p.label || p.displayNumber}</option>)}
-        </select>
+      {/* Header */}
+      <div className="wa-header">
+        <div className="wa-avatar">WA</div>
+        <div>
+          <div className="wa-contact-name">{customerNumber}</div>
+          <div className="wa-status">{activePhone ? `Sending from: ${activePhone.displayNumber}` : 'No phone selected'}</div>
+        </div>
       </div>
 
-      <div className="wa-message-list">
-        {messages.map(m => <MessageBubble key={m.wamid} message={m} />)}
-      </div>
-
-      <div className="wa-chat-footer">
-        <button onClick={() => setShowTemplates(!showTemplates)}>📄</button>
-        {showTemplates && (
-          <div className="wa-template-popover">
-            <TemplateGallery templates={templates} loading={isLoading} onSelect={(t) => {
-              client.sendTemplate({ fromPhoneNumberId: activePhoneId, to: customerNumber, templateName: t.name, languageCode: t.language });
-              setShowTemplates(false);
-            }} />
-          </div>
+      {/* Messages Area */}
+      <div className="wa-messages-area">
+        {isLoading ? (
+          <div className="wa-loading">Loading messages...</div>
+        ) : messages.length === 0 ? (
+          <div className="wa-empty">No messages yet. Start a conversation!</div>
+        ) : (
+          messages.map((msg) => (
+            <MessageBubble key={msg.wamid} message={msg} />
+          ))
         )}
-        <input value={text} onChange={e => setText(e.target.value)} placeholder="Type a message..." />
-        <button onClick={send} className="wa-send-btn">Send</button>
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input Area */}
+      <div className="wa-input-footer">
+        <input 
+          type="text" 
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder={activePhone ? "Type a message" : "Select a phone number first"}
+          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          disabled={!activePhone}
+        />
+        <button onClick={handleSend} disabled={isSending || !activePhone}>
+          {isSending ? '...' : 'Send'}
+        </button>
       </div>
     </div>
   );
