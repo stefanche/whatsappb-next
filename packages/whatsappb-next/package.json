@@ -1,15 +1,43 @@
 {
-  "name": "whatsappb-next",
+  "name": "whatsapp-business-api-nextjs",
   "version": "0.1.0",
+  "author": "Stefan Chetan (https://github.com/stefanche)",
   "description": "Full-stack WhatsApp Business API toolkit for Next.js - server components, webhook handling, and React UI",
   "license": "GPL-3.0",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
-  "publishConfig": {
-    "access": "public"
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./styles": "./dist/styles/whatsapp.css"
   },
+  "keywords": [
+    "whatsapp",
+    "whatsapp-business",
+    "whatsapp-api",
+    "meta",
+    "nextjs",
+    "react",
+    "webhook",
+    "messaging"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanche/whatsappb-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stefanche/whatsappb-next/issues"
+  },
+  "homepage": "https://github.com/stefanche/whatsappb-next#readme",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -21,7 +49,7 @@
     "vitest": "^2.0.0"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0 || ^19.2.0"
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
   }
 }
