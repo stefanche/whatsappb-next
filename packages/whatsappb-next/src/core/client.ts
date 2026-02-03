@@ -8,8 +8,8 @@ import {
   SendTemplateOptions,
   WhatsAppTemplate,
   WhatsAppPhoneConfig
-} from './types';
-import { IWhatsAppStorage, WhatsAppMessageRecord, WhatsAppConversation } from '../db/types';
+} from './types/index.js';
+import { IWhatsAppStorage, WhatsAppMessageRecord, WhatsAppConversation } from '../db/types.js';
 import { json } from 'stream/consumers';
 
 /** Button structure for template messages */

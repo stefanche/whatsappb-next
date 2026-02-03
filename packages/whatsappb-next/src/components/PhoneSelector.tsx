@@ -1,6 +1,6 @@
 import React from 'react';
-import { WhatsAppPhoneConfig } from '../core/types';
-import { useWhatsApp } from './WhatsAppProvider';
+import { WhatsAppPhoneConfig } from '../core/types/index.js';
+import { useWhatsApp } from './WhatsAppProvider.js';
 
 interface PhoneSelectorProps {
   /** Optional: Override phones from context */

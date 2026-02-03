@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { WhatsAppTemplate } from '../core/types';
+import { WhatsAppTemplate } from '../core/types/index.js';
 
 interface TemplateFormProps {
   template: WhatsAppTemplate;

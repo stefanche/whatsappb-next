@@ -1,6 +1,6 @@
 import React from 'react';
-import { useWhatsApp } from './WhatsAppProvider';
-import { WhatsAppTemplate } from '../core/types';
+import { useWhatsApp } from './WhatsAppProvider.js';
+import { WhatsAppTemplate } from '../core/types/index.js';
 
 interface TemplatePickerProps {
   // Now passes the whole object instead of just a string

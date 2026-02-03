@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useWhatsApp } from './WhatsAppProvider';
+import { useWhatsApp } from './WhatsAppProvider.js';
 
 type ComposerMode = 'text' | 'image' | 'document' | 'template';
 

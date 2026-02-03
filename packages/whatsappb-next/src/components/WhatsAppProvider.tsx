@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { WhatsAppClient } from '../core/client';
-import { WhatsAppTemplate, WhatsAppPhoneConfig } from '../core/types';
+import { WhatsAppClient } from '../core/client.js';
+import { WhatsAppTemplate, WhatsAppPhoneConfig } from '../core/types/index.js';
 
 interface WhatsAppContextType {
   client: WhatsAppClient;

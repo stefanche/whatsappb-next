@@ -1,5 +1,5 @@
 import React from 'react';
-import { WhatsAppTemplate } from '../core/types';
+import { WhatsAppTemplate } from '../core/types/index.js';
 
 export const TemplateGallery = ({ templates, onSelect, loading }: { 
   templates: WhatsAppTemplate[]; 

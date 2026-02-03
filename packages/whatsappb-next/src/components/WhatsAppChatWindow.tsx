@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useWhatsApp } from './WhatsAppProvider';
-import { MessageBubble } from './MessageBubble';
-import { WhatsAppMessageRecord } from '../db/types';
+import { useWhatsApp } from './WhatsAppProvider.js';
+import { MessageBubble } from './MessageBubble.js';
+import { WhatsAppMessageRecord } from '../db/types.js';
 
 interface WhatsAppChatWindowProps {
   customerNumber: string;

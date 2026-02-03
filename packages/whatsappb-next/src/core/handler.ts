@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { WhatsAppClient } from './client';
-import { IWhatsAppStorage } from '../db/types';
+import { WhatsAppClient } from './client.js';
+import { IWhatsAppStorage } from '../db/types.js';
 
 /**
  * Creates a secure API route handler to proxy frontend requests to the Meta API.

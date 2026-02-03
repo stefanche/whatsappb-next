@@ -9,8 +9,8 @@ import {
   MessageReceivedEvent,
   StatusUpdatedEvent,
   WebhookErrorEvent,
-} from './types/webhooks';
-import { IWhatsAppStorage, MessageStatus } from '../db/types';
+} from './types/webhooks.js';
+import { IWhatsAppStorage, MessageStatus } from '../db/types.js';
 
 // ============================================================================
 // WEBHOOK HANDLER WITH OBSERVER PATTERN

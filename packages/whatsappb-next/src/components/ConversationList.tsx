@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useWhatsApp } from './WhatsAppProvider';
-import { WhatsAppConversation } from '../db/types';
+import { useWhatsApp } from './WhatsAppProvider.js';
+import { WhatsAppConversation } from '../db/types.js';
 
 interface ConversationListProps {
   /** Currently selected conversation's customer number */

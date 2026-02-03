@@ -1,5 +1,5 @@
 import React from 'react';
-import { WhatsAppMessageRecord } from '../db/types';
+import { WhatsAppMessageRecord } from '../db/types.js';
 
 interface TemplateButton {
   text: string;
