@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WhatsAppMessage {
+  id             String   @id @default(cuid())
+  wamid          String   @unique
+  phoneNumberId  String   @map("phone_number_id")
+  customerNumber String   @map("customer_number")
+  type           String
+  content        String
+  direction      String
+  status         String
+  timestamp      DateTime
+  metadata       Json?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@index([phoneNumberId])
+  @@index([customerNumber])
+  @@index([phoneNumberId, customerNumber])
+  @@index([timestamp])
+  @@map("whatsapp_messages")
+}
+
+model WebhookEvent {
+  id        String   @id @default(cuid())
+  eventType String   @map("event_type")
+  payload   Json
+  processed Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([eventType])
+  @@index([createdAt])
+  @@map("webhook_events")
+}
