@@ -2,25 +2,6 @@
 
 A full-stack toolkit for integrating WhatsApp Business API into Next.js applications. This monorepo contains the core library and a demo application.
 
-## Repository Structure
-
-```
-whatsappb-next/
-├── packages/
-│   └── whatsappb-next/     # Core library (npm package)
-│       ├── src/
-│       │   ├── components/ # React UI components
-│       │   ├── core/       # Client, handler, webhook
-│       │   ├── db/         # Storage interface
-│       │   └── styles/     # CSS styles
-│       └── package.json
-├── app/                     # Demo Next.js application
-│   ├── pages/
-│   ├── lib/
-│   └── package.json
-└── README.md
-```
-
 ## Features
 
 ### Core Library (`whatsapp-business-api-nextjs`)
@@ -329,6 +310,46 @@ export class PostgresStorage implements IWhatsAppStorage {
 4. Commit your changes (`git commit -m 'Add amazing feature'`)
 5. Push to the branch (`git push origin feature/amazing-feature`)
 6. Open a Pull Request
+
+## Repository Structure
+
+```
+whatsappb-next/
+├── app/
+│   ├── expressjs_demo_app/           # Express API demo
+│   │   ├── prisma/
+│   │   │   └── schema.prisma
+│   │   ├── src/
+│   │   │   ├── db/                  # Prisma and storage helpers
+│   │   │   ├── lib/                 # WhatsApp client wiring
+│   │   │   └── routes/              # REST endpoints (api, webhook)
+│   │   ├── deploy.sh
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── nextjs_demo_app/             # Next.js dashboard demo
+│       ├── lib/
+│       ├── pages/
+│       │   └── api/whatsapp/        # Proxy + debug API routes
+│       ├── styles/
+│       ├── next-env.d.ts
+│       ├── package.json
+│       └── tsconfig.json
+├── packages/
+│   └── whatsappb-next/               # Publishable core library
+│       ├── src/
+│       │   ├── components/          # React chat UI widgets
+│       │   ├── core/                # Client, handlers, tests
+│       │   ├── db/                  # Storage interfaces
+│       │   └── styles/              # WhatsApp-inspired CSS
+│       ├── LICENSE
+│       ├── README.md
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── vitest.config.ts
+├── LICENSE
+├── package.json
+└── README.md
+```
 
 ## License
 
