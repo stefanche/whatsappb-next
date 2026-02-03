@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-business-api-nextjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Stefan Chetan (https://github.com/stefanche)",
   "description": "Full-stack WhatsApp Business API toolkit for Next.js - server components, webhook handling, and React UI",
   "license": "GPL-3.0",
